@@ -1,10 +1,12 @@
 // Array.prototype.customeFilter = function(callBack) {
 //     const filter = []
 //     for (let index = 0; index < this.length; index++) {
-//         filter.push(callBack(this[index], index))
+//         if (callBack(this[index], index)) {
+//         filter.push(this[index]);
+//         return true;
 //     }
-
-//     return filter
+// }
+//     return false;
 // }
 
 // const testFilter = [1,2,3].customeFilter((item) => item + 5)
@@ -12,6 +14,16 @@
 // console.log(testFilter)
 
 
+
+// Array.prototype.customeFilter = function(callBack) {
+// return this.reduce((acc, curr, index) => {
+//  if(callBack(curr, index)) {
+//     acc.push(curr)
+//  }
+//  return acc
+// }, [])
+// }
+// console.log([1,2,3,4].customeFilter((item) => item >2))
 
 
 
@@ -34,6 +46,21 @@
 
 
 
+Array.prototype.myEvery = function(callBack) {
+    for (let i = 0; i < this.length; i++) {
+        if(!callBack(this[i], i)) return false
+    }
+
+    return true
+}
+  
+    console.log([1,2,3,4].myEvery((item) => item > 0))
+
+
+
+
+
+
 
 // Array.prototype.customSome = function(callback) {
 //     for (let i = 0; i < this.length; i++) {
@@ -49,6 +76,19 @@
 
 // const hasLongFruit = fruits.customSome((fruit) => fruit.length > 10);
 // console.log(hasLongFruit); 
+
+
+
+// Array.prototype.mySome = function(callBack) {
+//     return this.reduce((acc, curr, index) => {
+//         console.log(curr)
+//      if(callBack(curr, index)) {
+//             return true
+//      }
+//      return acc
+//     }, false)
+//     }
+//     console.log([1,2,3,4, -1].mySome((item) => item > 0))
 
 
 
@@ -170,15 +210,15 @@
 
 
 
-const membrul1 = new Promise((resolve, reject) => resolve('membrul1'))
-const membrul2 = new Promise((resolve, reject) => resolve('membrul2'))
-const membrul3 = new Promise((resolve, reject) => resolve('membrul3'))
+// const membrul1 = new Promise((resolve, reject) => resolve('membrul1'))
+// const membrul2 = new Promise((resolve, reject) => resolve('membrul2'))
+// const membrul3 = new Promise((resolve, reject) => resolve('membrul3'))
 
-Promise.all([
-    // Promise.race([
-    membrul1,
-    membrul2,
-    membrul3
-]).then((message) => {
-    console.log(message)
-}).catch()
+// Promise.all([
+//     // Promise.race([
+//     membrul1,
+//     membrul2,
+//     membrul3
+// ]).then((message) => {
+//     console.log(message)
+// }).catch()
